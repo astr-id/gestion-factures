@@ -1,0 +1,85 @@
+<div class="container mt-4">
+  <form
+    [formGroup]="factureForm"
+    (ngSubmit)="onSubmit()"
+    class="needs-validation"
+    novalidate
+  >
+    <div class="form-group">
+      <label for="numero">Numéro</label>
+      <input
+        id="numero"
+        formControlName="numero"
+        class="form-control"
+        placeholder="Entrez le numéro de la facture"
+        required
+      />
+      <small class="text-danger" *ngIf="factureForm.get('numero')?.hasError('required') && factureForm.get('numero')?.touched">
+        Le numéro est obligatoire.
+      </small>
+      <small class="text-danger" *ngIf="factureForm.get('numero')?.hasError('pattern') && factureForm.get('numero')?.touched">
+        Le numéro doit être valide (chiffres uniquement).
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="montant">Montant</label>
+      <input
+        id="montant"
+        formControlName="montant"
+        class="form-control"
+        type="number"
+        placeholder="Entrez le montant"
+        required
+      />
+      <small class="text-danger" *ngIf="factureForm.get('montant')?.hasError('required') && factureForm.get('montant')?.touched">
+        Le montant est obligatoire.
+      </small>
+      <small class="text-danger" *ngIf="factureForm.get('montant')?.hasError('min') && factureForm.get('montant')?.touched">
+        Le montant doit être supérieur ou égal à 0.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="nomClient">Nom Client</label>
+      <input
+        id="nomClient"
+        formControlName="nomClient"
+        class="form-control"
+        placeholder="Entrez le nom du client"
+        required
+      />
+      <small class="text-danger" *ngIf="factureForm.get('nomClient')?.hasError('required') && factureForm.get('nomClient')?.touched">
+        Le nom du client est obligatoire.
+      </small>
+      <small class="text-danger" *ngIf="factureForm.get('nomClient')?.hasError('minlength') && factureForm.get('nomClient')?.touched">
+        Le nom doit comporter au moins 3 caractères.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="villeClient">Ville Client</label>
+      <input
+        id="villeClient"
+        formControlName="villeClient"
+        class="form-control"
+        placeholder="Entrez la ville du client"
+        required
+      />
+      <small class="text-danger" *ngIf="factureForm.get('villeClient')?.hasError('required') && factureForm.get('villeClient')?.touched">
+        La ville est obligatoire.
+      </small>
+      <small class="text-danger" *ngIf="factureForm.get('villeClient')?.hasError('minlength') && factureForm.get('villeClient')?.touched">
+        La ville doit comporter au moins 3 caractères.
+      </small>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-success mt-3"
+      [disabled]="factureForm.invalid"
+    >
+      Ajouter Facture
+    </button>
+  </form>
+</div>

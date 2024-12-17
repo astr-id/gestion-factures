@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <table class="table table-striped table-bordered" *ngIf="factures.length > 0">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Numéro</th>
+        <th scope="col">Montant</th>
+        <th scope="col">Nom Client</th>
+        <th scope="col">Ville Client</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let facture of factures">
+        <td>{{ facture.numero }}</td>
+        <td>{{ facture.montant }}</td>
+        <td>{{ facture.nomClient }}</td>
+        <td>{{ facture.villeClient }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Si aucune facture -->
+  <div *ngIf="factures.length === 0" class="alert alert-warning" role="alert">
+    Aucun facture disponible pour le moment.
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="facture2-page container">
+  <h2 class="text-center mb-4">Liste des factures</h2>
+  <ul class="list-group">
+    <li
+      *ngFor="let facture of factures"
+      class="d-flex justify-content-between align-items-center"
+    >
+      <div>
+        <p>
+          <strong>{{ facture.numero }} - {{ facture.nomClient }}</strong>
+          ({{ facture.villeClient }})
+        </p>
+      </div>
+      <span class="badge bg-primary rounded-pill">{{ facture.montant }} €</span>
+    </li>
+  </ul>
+</div>
